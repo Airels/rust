@@ -57,6 +57,38 @@ pub fn merge_sort(array: &Vec<i32>) -> Vec<i32> {
     return sorted;
 }
 
+pub fn shaker_sort(array: &Vec<i32>) -> Vec<i32> {
+    let mut sorted = array.to_vec();
+    let mut swapped: bool;
+    let end = sorted.len() - 1;
+
+    loop {
+        swapped = false;
+        for i in 0..end {
+            if sorted[i] > sorted[i + 1] {
+                swap(&mut sorted, i, i + 1);
+                swapped = true;
+            }
+        }
+
+        if !swapped {
+            return sorted;
+        }
+
+        swapped = false;
+        for i in (0..end-1).rev() {
+            if sorted[i] > sorted[i + 1] {
+                swap(&mut sorted, i, i + 1);
+                swapped = true;
+            }
+        }
+
+        if !swapped {
+            return sorted;
+        }
+    }
+}
+
 // ***
 // Utils functions
 // ***
@@ -76,4 +108,10 @@ fn split(array: &Vec<i32>) -> (Vec<i32>, Vec<i32>) {
     }
 
     return (vec1, vec2);
+}
+
+fn swap(array: &mut Vec<i32>, i: usize, j: usize) {
+    let tmp = array[i];
+    array[i] = array[j];
+    array[j] = tmp;
 }

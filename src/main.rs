@@ -11,6 +11,7 @@ fn main() {
     
     evaluate_sort("Merge Sort", merge_sort, &vec);
     evaluate_sort("Insertion Sort", insertion_sort, &vec);
+    evaluate_sort("Shaker sort", shaker_sort, &vec);
 
     println!("End.");
 }
